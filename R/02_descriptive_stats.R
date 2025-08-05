@@ -11,7 +11,7 @@ summary(df)
 colSums(is.na(df))
 
 # Handle missing values using mean
-----------------------------------
+#----------------------------------
   
 df$Age[is.na(df$Age)] <- mean(df$Age, na.rm = TRUE)
 df$Seat.comfort[is.na(df$Seat.comfort)] <- mean(df$Seat.comfort, na.rm = TRUE)
@@ -24,7 +24,7 @@ df$Arrival.Delay.in.Minutes[is.na(df$Arrival.Delay.in.Minutes)] <-
   mean(df$Arrival.Delay.in.Minutes, na.rm = TRUE)
 
 # Generate group-wise summary statistics to examine differences in average ratings and demographic features between satisfied and dissatisfied customers.
---------------------------------------------------------------------------------------------------------------------------------------------------------
+#--------------------------------------------------------------------------------------------------------------------------------------------------------
   
 df %>%
   group_by(Satisfaction) %>%
@@ -38,7 +38,7 @@ df %>%
   )
 
 #Count Satisfaction Values
--------------------------
+#-------------------------
   
 df %>%
   count(Satisfaction)
@@ -82,4 +82,5 @@ ggplot(df, aes(x = Departure.Delay.in.Minutes, fill = Satisfaction)) +
 # Arrival Delay Boxplot
 ggplot(df, aes(x = Satisfaction, y = Arrival.Delay.in.Minutes, fill = Satisfaction)) +
   geom_boxplot() +
+
   labs(title = "Arrival Delay by Satisfaction", y = "Arrival Delay (min)")
